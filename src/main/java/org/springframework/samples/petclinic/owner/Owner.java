@@ -56,7 +56,7 @@ public class Owner extends Person {
 
 	@Column(name = "telephone")
 	@NotEmpty
-	@Digits(fraction = 0, integer = 9)
+	@Digits(fraction = 0, integer = 8)
 	private String telephone;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
