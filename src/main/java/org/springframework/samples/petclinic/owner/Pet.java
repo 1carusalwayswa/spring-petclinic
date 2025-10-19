@@ -47,7 +47,7 @@ import org.jspecify.annotations.Nullable;
 public class Pet extends NamedEntity {
 
 	@Column(name = "birth_date")
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy/MM/dd")
 	private @Nullable LocalDate birthDate;
 
 	@ManyToOne

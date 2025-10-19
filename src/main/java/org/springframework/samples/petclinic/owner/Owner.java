@@ -50,10 +50,8 @@ import org.jspecify.annotations.Nullable;
 @Table(name = "owners")
 public class Owner extends Person {
 
-	@Column(name = "address", length = 255)
+	@Column(name = "address")
 	@NotBlank
-	@Size(max = 255, message = "Address must not exceed 255 characters")
-	@Pattern(regexp = "^[\\p{L}\\p{N}\\s\\-'.,#/()]+$", message = "Address can only contain letters, numbers, spaces, and common address symbols (-, ', ., #, /, ())")
 	private @Nullable String address;
 
 	@Column(name = "city")
@@ -62,7 +60,7 @@ public class Owner extends Person {
 
 	@Column(name = "telephone")
 	@NotBlank
-	@Pattern(regexp = "\\d{10}", message = "{telephone.invalid}")
+	@Pattern(regexp = "\\d{11}", message = "{telephone.invalid}")
 	private @Nullable String telephone;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
