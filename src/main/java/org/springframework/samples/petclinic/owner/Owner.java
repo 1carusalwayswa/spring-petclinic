@@ -33,6 +33,7 @@ import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -49,8 +50,10 @@ import org.jspecify.annotations.Nullable;
 @Table(name = "owners")
 public class Owner extends Person {
 
-	@Column(name = "address")
+	@Column(name = "address", length = 255)
 	@NotBlank
+	@Size(max = 255, message = "Address must not exceed 255 characters")
+	@Pattern(regexp = "^[\\p{L}\\p{N}\\s\\-'.,#/()]+$", message = "Address can only contain letters, numbers, spaces, and common address symbols (-, ', ., #, /, ())")
 	private @Nullable String address;
 
 	@Column(name = "city")
