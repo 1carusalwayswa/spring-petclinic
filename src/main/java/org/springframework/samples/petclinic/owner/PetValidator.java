@@ -42,6 +42,11 @@ public class PetValidator implements Validator {
 			errors.rejectValue("name", REQUIRED, REQUIRED);
 		}
 
+		final int MAX_NAME_LENGTH = 3; // 設定最大長度
+		if (StringUtils.hasLength(name) && name.length() > MAX_NAME_LENGTH) {
+			errors.rejectValue("name", "tooLong", "Name cannot exceed " + MAX_NAME_LENGTH + " characters.");
+    	}
+
 		// type validation
 		if (pet.isNew() && pet.getType() == null) {
 			errors.rejectValue("type", REQUIRED, REQUIRED);
